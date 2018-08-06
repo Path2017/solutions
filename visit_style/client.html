@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .box {
+    margin: 40px;
+    overflow: hidden;
+  }
+
+  .mydiv {
+    width: 100px;
+    height: 120px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    margin: 20px 30px;
+  }
+</style>
+
 <body>
-  
+  <div class="box">
+    <div class="mydiv" id="myDiv"></div>
+  </div>
+  <script>
+    var mydiv = document.getElementById('myDiv');
+    // clientWidth
+    console.log(mydiv.clientWidth); // 140 计算为：width+(padding-left)+(padding-right)
+    // clientHeight
+    console.log(mydiv.clientHeight); // 160 计算为：height+(padding-top)+(padding-bottom)
+
+    // 获取浏览器窗口的大小
+    function getViewport() {
+      if (document.compatMode == "BackCompat") {
+        return {
+          width: document.body.clientWidth,
+          height: document.body.clientHeight
+        };
+      } else {
+        return {
+          width: document.documentElement.clientWidth,
+          height: document.documentElement.clientHeight
+        };
+      }
+    }
+    console.log(getViewport());
+  </script>
 </body>
+
 </html>
