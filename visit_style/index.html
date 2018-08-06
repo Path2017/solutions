@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>访问元素样式</title>
 </head>
+
 <body>
   <div>访问元素样式</div>
+  <div id="myDiv"></div>
+  <script>
+    // 检测浏览器是否支持DOM2级定义的CSS能力
+    var surportsDOM2CSS = document.implementation.hasFeature('CSS', '2.0');
+    console.log(surportsDOM2CSS);
+    var surportsDOM2CSS2 = document.implementation.hasFeature('CSS2', '2.0');
+    console.log(surportsDOM2CSS2);
+    // 访问元素的样式
+    /*
+     * css属性          javascript属性
+     * background-img   style.backgroundImage
+     * color            style.color
+     * display          style.display
+     * font-family      style.fontFamily
+     */
+     var myDiv = document.getElementById('myDiv');
+     // 设置大小及背景颜色
+     myDiv.style.width = '100px';
+     myDiv.style.height = '100px';
+     myDiv.style.backgroundColor = 'red';
+     // 设置边框
+     myDiv.style.border = '1px solid black';
+
+     // 得到的html为 <div id="myDiv" style="width: 100px; height: 100px; background-color: red; border: 1px solid black;"></div>
+  </script>
 </body>
+
 </html>
