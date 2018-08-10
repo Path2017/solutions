@@ -81,14 +81,64 @@
        * @param: 参数1：事件处理程序名称；参数2：事件处理程序函数
        */
       var btn = document.getElementById("ieBtn");
-      console.log(btn);
+      // console.log(btn);
       var btn2 = document.getElementById("myBtn2");
-      btn2.attachEvent("onclick", function () {
+      /*btn2.attachEvent("onclick", function () {
         alert("Clicked");
-      });
+      });*/
     </script>
   </div>
   <!-- IE事件处理程序 end -->
+  <!-- 跨浏览器的事件处理程序 begin -->
+  <div>
+    <input id="expBtn" type="button" value="跨浏览器的事件处理程序">
+  </div>
+  <script>
+    var EventUtil = {
+      /*
+       * 添加事件
+       * @param: element 要操作的元素
+       * @param: type 事件名称
+       * @param: handler 事件处理程序函数
+       */
+      addHandler: function (element, type, handler) {
+        if (element.addEventListener) {
+          // DOM2 级事件处理程序
+          element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+          // IE事件处理程序
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler;
+        }
+      },
+      /*
+       * 删除已添加事件
+       * @param: element 要操作的元素
+       * @param: type 事件名称
+       * @param: handler 事件处理程序函数
+       */
+      removeHandler: function (element, type, handler) {
+        if (element.removeEventListener) {
+          // DOM2 级事件处理程序
+          element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent) {
+          // IE事件处理程序
+          element.detachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = null;
+        }
+      }
+    }
+    var expbtn = document.getElementById('expBtn');
+    var fun = function(){
+      alert('clicked');
+    }
+    EventUtil.addHandler(expbtn, "click", fun);
+    EventUtil.removeHandler(btn, "click", handler);
+    // 备注：只支持DOM0 级的浏览器已经没有那么多了，所以未对DOM0进行处理
+  </script>
+  <!-- 跨浏览器的事件处理程序 end -->
 </body>
 
 </html>
