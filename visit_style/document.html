@@ -21,7 +21,8 @@
   <input type="button" value="Click Me" onclick="alert(this.value)">
   <!-- 事件处理程序 end -->
   <!-- DOM0 级事件处理程序 begin -->
-  DOM0 级事件处理程序被认为是元素的方法，即this指向的是元素本身
+  <br/> DOM0 级事件处理程序被认为是元素的方法，即this指向的是元素本身
+  <br/>
   <div id="myDiv">点击我</div>
   <script>
     var mydiv = document.getElementById('myDiv');
@@ -31,6 +32,47 @@
     }
   </script>
   <!-- DOM0 级事件处理程序 end -->
+  <!-- DOM2 级事件处理程序 start -->
+  <br/>DOM2 级事件处理程序
+  <br/>
+  <div id="domTag">DOM2级事件</div>
+  <script>
+    /*
+     * @param: 要处理的事件名
+     * @param: 作为事件处理程序的函数
+     * @param: 一个布尔值 true: 表示在捕获阶段调用事件处理程序；false: 表示在冒泡阶段调用事件处理程序
+     */
+    var tagdiv = document.getElementById('domTag');
+    tagdiv.addEventListener('click', function (event) {
+      console.log(this); // this 指向的是元素本身
+      console.log(event.type);
+    }, false);
+    tagdiv.addEventListener('click', function (event) {
+      alert('clicked');
+    }, false);
+  </script>
+  <input type="button" id="remBtn" value="测试removeEventListener">
+  <script>
+    var remtag = document.getElementById('remBtn');
+    // 匿名函数无法移除
+    remBtn.addEventListener('click', function () {
+      alert('匿名函数')
+    }, false)
+    remBtn.removeEventListener('click', function () {
+      alert('匿名函数')
+    }, false)
+  </script>
+  <input type="button" id="nameBtn" value="移除实名函数">
+  <script>
+    var nametag = document.getElementById('nameBtn');
+    var handler = function () {
+      alert('clicked');
+    }
+    nametag.addEventListener('click', handler, false);
+    nametag.removeEventListener('click', handler, false);
+  </script>
+
+  <!-- DOM2 级事件处理程序 end -->
 </body>
 
 </html>
