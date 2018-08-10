@@ -21,11 +21,13 @@
   <input type="button" value="Click Me" onclick="alert(this.value)">
   <!-- 事件处理程序 end -->
   <!-- DOM0 级事件处理程序 begin -->
+  DOM0 级事件处理程序被认为是元素的方法，即this指向的是元素本身
   <div id="myDiv">点击我</div>
   <script>
     var mydiv = document.getElementById('myDiv');
     mydiv.onclick = function (event) {
       alert(event.type);
+      console.dir(this);
     }
   </script>
   <!-- DOM0 级事件处理程序 end -->
