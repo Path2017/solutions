@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-  <div id="myDiv"></div>
+  <!-- 事件处理程序 begin -->
+  <div onclick="alert('点击')">点击我</div>
+  <div onclick="showMessage()">点我</div>
+  <script>
+    function showMessage() {
+      alert('message');
+    }
+  </script>
+  <div onclick="alert(event.type)">event type</div>
+  <input type="button" value="Click Me" onclick="alert(this.value)">
+  <!-- 事件处理程序 end -->
+  <!-- DOM0 级事件处理程序 begin -->
+  <div id="myDiv">点击我</div>
   <script>
     var mydiv = document.getElementById('myDiv');
-    console.log(mydiv);
+    mydiv.onclick = function (event) {
+      alert(event.type);
+    }
   </script>
+  <!-- DOM0 级事件处理程序 end -->
 </body>
+
 </html>
