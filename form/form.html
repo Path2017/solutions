@@ -7,6 +7,24 @@
   <title>form</title>
 </head>
 <body>
+  <div>提交表单</div>
+  <form name="form1" action="www.baidu.com">
+    <input type="text" name="name">
+    <input type="submit" value="提交">
+  </form>
+  <script>
+    // 获取表单
+    var form1 = document.forms[0];
+    // 或
+    // var form1 = document.forms[‘form1'];
+    console.log(form1);
+  </script>
+  <div>重置表单</div>
+  <form action="www.baidu.com" name="form2">
+    <input type="text" name="mes">
+    <input type="text" name="type">
+    <input type="reset" value="重置">
+  </form>
   
 </body>
 </html>
