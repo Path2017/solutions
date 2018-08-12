@@ -40,6 +40,29 @@
       console.log(nodelist.length);
     </script>
   </div>
+  <div>共有的表单字段属性</div>
+  <div>
+    <form action="" method="post" id="postForm">
+      <ul>
+        <li>输入框1<input type="text" name="post1"></li>
+        <li>输入框2<input type="text" name="post2"></li>
+        <li>输入框3<input type="text" name="post3"></li>
+      </ul>
+    </form>
+    <script>
+      var form = document.getElementById('postForm');
+      var field = form.elements[0];
+
+      // 修改value属性
+      // field.value = '输入1';
+      // 检测form属性
+      console.log(field.form === form);
+      // 把焦点设置到当前字段
+      field.focus();
+      // 禁止当前字段
+      // field.disabled = true;
+    </script>
+  </div>
   
 </body>
 </html>
