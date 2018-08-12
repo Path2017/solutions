@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>event</title>
 </head>
+
 <body>
-  
+  <div>DOM事件按钮</div>
+  <div>
+    <input id="domBtn" type="button" value="DOM事件按钮">
+  </div>
+  <script>
+    var btn = document.getElementById('domBtn');
+    btn.onclick = function (event) {
+      console.log(event.type);
+    }
+    btn.addEventListener('click', function (event) {
+      console.log(event.type);
+    })
+  </script>
+  <div>通过一个函数处理多个事件</div>
+  <div>
+    <div id="moreBtn">通过一个函数处理多个事件</div>
+  </div>
+  <script>
+    var morebtn = document.getElementById('moreBtn');
+    var handler = function (event) {
+      switch (event.type) {
+        case 'click':
+          console.log('clicked');
+          event.target.style.backgroundColor = 'red';
+          break;
+        case 'mouseover':
+          event.target.style.backgroundColor = 'red';
+          console.log('mouseover');
+        case "mouseout":
+          event.target.style.backgroundColor = 'red';
+          break;
+      }
+    }
+    morebtn.onclick = handler;
+    morebtn.onmouseover = handler;
+    morebtn.onmouseout = handler;
+  </script>
+
 </body>
+
 </html>
