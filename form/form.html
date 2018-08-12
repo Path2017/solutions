@@ -25,6 +25,21 @@
     <input type="text" name="type">
     <input type="reset" value="重置">
   </form>
+  <div>表单字段</div>
+  <div>
+    <form action="" method="post" id="myForm">
+      <ul>
+        <li><input type="radio" name="color" value="red">红</li>
+        <li><input type="radio" name="color" value="bule">蓝</li>
+        <li><input type="radio" name="color" value="green">绿</li>
+      </ul>
+    </form>
+    <script>
+      var myform = document.getElementById('myForm');
+      var nodelist = myform.elements;
+      console.log(nodelist.length);
+    </script>
+  </div>
   
 </body>
 </html>
