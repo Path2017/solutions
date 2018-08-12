@@ -38,13 +38,33 @@
           event.target.style.backgroundColor = 'red';
           console.log('mouseover');
         case "mouseout":
-          event.target.style.backgroundColor = 'red';
+          event.target.style.backgroundColor = '';
           break;
       }
     }
     morebtn.onclick = handler;
     morebtn.onmouseover = handler;
     morebtn.onmouseout = handler;
+  </script>
+  <div>取消默认事件</div>
+  <div>
+    <a href="www.baidu.com" target="_blank" id="linkBtn">链接</a>
+  </div>
+  <script>
+    var linkBtn = document.getElementById('linkBtn');
+    linkBtn.onclick = function (event) {
+      stopDefault(event);
+      console.log('取消默认事件');
+    }
+
+    function stopDefault(e) {
+      var ev = e || window.event;
+      if (ev.preventDefault) {
+        ev.preventDefault();
+      } else {
+        ev.cancelBubble = true;
+      }
+    }
   </script>
 
 </body>
