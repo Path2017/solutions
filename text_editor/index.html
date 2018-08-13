@@ -11,7 +11,7 @@
 <body>
   <div>富文本编辑器</div>
   <div>
-    <iframe src="./frame.html" frameborder="0" name="myFrame"></iframe>
+    <iframe src="./frame.html" style="height:300px;width:300px;" id="myFrame"></iframe>
   </div>
   <script>
     var EventUtil = {
@@ -109,8 +109,11 @@
       }
     };
 
-    EventUtil.addHandler('window', 'load', function () {
-      frames['myFrame'].document.designMode = 'on';
+    EventUtil.addHandler(window, 'load', function () {
+      console.dir(frames['myFrame']);
+      var myframe = document.getElementById('myFrame');
+      console.dir(myframe);
+      myframe.contentDocument.designMode = "On";
     })
   </script>
 
