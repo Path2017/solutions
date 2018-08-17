@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JSON</title>
 </head>
+
 <body>
   <div>
     json
   </div>
+  <script>
+    var data = [{
+        "name": "zhangsan",
+        "age": 21
+      },
+      {
+        "name": "lisi",
+        "age": 24
+      }
+    ];
+    console.info(data);
+    // JSON.stringfy("数据"，"过滤器"，"控制缩进")
+    console.log(JSON.stringify(data)) // [{"name":"zhangsan","age":21},{"name":"lisi","age":24}]
+    console.log(JSON.stringify(data, ["name"])) // [{"name":"zhangsan"},{"name":"lisi"}]
+    console.log(JSON.stringify(data, ["name"], 4)) 
+    /*
+    [
+    {
+        "name": "zhangsan"
+    },
+    {
+        "name": "lisi"
+    }
+    ]*/
+    
+  </script>
 </body>
+
 </html>
